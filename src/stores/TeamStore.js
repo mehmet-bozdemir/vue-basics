@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 export let useTeamStore = defineStore('team', {
-  state (){
+  state: () => {
     return{
       name: '',
       spots: 0,
@@ -33,6 +33,16 @@ export let useTeamStore = defineStore('team', {
       async fill() {
       let r = await import('@/team.json');
       this.$state = r.default;
+      },
+      
+      grow(spots){
+        this.spots = spots;
+      }
+    },
+    
+    getters: {
+      spotsRemaining(){
+        return this.spots - this.members.length;
       }
     }
 })

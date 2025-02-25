@@ -3,6 +3,8 @@
 //   team:Object
 // })
 
+import AddMemberModal from '@/components/Teams/AddMemberModal.vue'
+
 import {useTeamStore} from '@/stores/TeamStore.js'
 
 let team = useTeamStore();
@@ -13,7 +15,15 @@ let team = useTeamStore();
 
 <header class="flex justify-between">
   <div>
-    <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded disabled:bg-gray-400" :disabled="team.members.length === team.spots">Add Member ({{team.spots - team.members.length}})</button>
+    <!-- <button 
+    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded disabled:bg-gray-400" 
+    :disabled="!team.spotsRemaining"
+    @click="$emit('add')"
+    >
+    Add Member ({{team.spotsRemaining}} spots left)
+    </button> -->
+    
+    <AddMemberModal/>
   </div>
   <div>
     <div class="inline-flex items-center text-3xl relative">
